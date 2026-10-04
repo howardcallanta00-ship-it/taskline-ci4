@@ -34,3 +34,14 @@ jobs:
 
       - name: Run tests
         run: vendor/bin/phpunit --no-coverage
+
+  docker:
+    name: Production Docker image
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Build image
+        run: docker build --tag taskline-ci4:test .
